@@ -1,0 +1,50 @@
+  var x,y,cx,cy,xx,yy,i:integer;
+
+  // key 86 "V"
+ { if (ssCtrl in Shift)and(key=86) then  begin
+  can.Assign(Clipboard);
+  paintbox1.Canvas.draw(0,0,can);
+  end; }
+  // key 71 "G"
+  if (ssCtrl in Shift)and(key=71) then
+  begin
+    bck.Canvas.Draw(0,0,can);
+    can.Canvas.Brush.Color:=0;
+    can.Canvas.Pen.Color:=0;
+    can.Canvas.Rectangle(can.Canvas.ClipRect);
+    cx:=can.Width div 2;
+    cy:=can.Height div 2;
+    xx:=can.Width div 24;
+    yy:=can.Height div 24;
+    can.Canvas.pen.Color:=$004400;
+    can.Canvas.Font.Color:=clRed;
+    can.Canvas.Font.Size:=12;
+    for i := 0 to 12 do
+    begin
+      y:=cy+(yy*i);
+      can.Canvas.MoveTo(0,y);
+      can.Canvas.LineTo(can.Width,y);
+      can.Canvas.TextOut(cx+2,y+1,inttostr(-i));
+      x:=cx+(xx*i);
+      can.Canvas.MoveTo(x,0);
+      can.Canvas.LineTo(x,can.Height);
+      can.Canvas.TextOut(x+2,cy+1,inttostr(i));
+      x:=cx-(xx*i);
+      can.Canvas.MoveTo(x,0);
+      can.Canvas.LineTo(x,can.Height);
+      can.Canvas.TextOut(x+2,cy+1,inttostr(-i));
+      y:=cy-(yy*i);
+      can.Canvas.MoveTo(0,y);
+      can.Canvas.LineTo(can.Width,y);
+      can.Canvas.TextOut(cx+2,y+1,inttostr(i));
+    end;
+  end;
+  // key 68 "D"
+  if (ssCtrl in Shift)and(key=68) then begin
+    bck.Canvas.Draw(0,0,can);
+    color_fon:=clWhite;
+    can.Canvas.Brush.Color:=color_fon;
+    can.Canvas.Pen.Color:=color_fon;
+    can.Canvas.Rectangle(can.Canvas.ClipRect);
+    paintbox1.Canvas.draw(0,0,can);
+  end;
