@@ -93,8 +93,6 @@ begin
     can.Canvas.Draw(0,0,bck);
     paintbox1.Canvas.draw(0,0,can);
   end;
-
-
 end;
 
 procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);
@@ -177,9 +175,9 @@ begin
   bck.Canvas.Draw(0,0,can);
   c:=can.Canvas.Pixels[MousePos.x,MousePos.y];
   if c<>color_pen then begin
-  can.canvas.Brush.Color:=color_pen;
-  can.canvas.FloodFill(MousePos.x,MousePos.y,c,fsSurface);
-  paintbox1.Canvas.draw(0,0,can);
+    can.canvas.Brush.Color:=color_pen;
+    can.canvas.FloodFill(MousePos.x,MousePos.y,c,fsSurface);
+    paintbox1.Canvas.draw(0,0,can);
   end;
 end;
 
@@ -222,7 +220,7 @@ begin
   paintbox1.Canvas.draw(0,0,can);
   end;
 
-if r>abs(2) then begin if s<>'' then s:=''; tx:=mx; ty:=my; end;
+if r>2 then begin if s<>'' then s:=''; tx:=mx; ty:=my; end;
 
 lx:=mx; ly:=my;
 end;
@@ -234,7 +232,6 @@ if button=mbLeft then click_left:=false;
 if button=mbRight then click_right:=false;
 
 if button=mbMiddle then color_pen:=can.Canvas.Pixels[x,y];
-
 end;
 
 end.
